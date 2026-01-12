@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import quotes from "../data/quotes";
+import quotes from"../data/quotes";
 
 const DynamicQuote = () => {
   const [index, setIndex] = useState(0);
