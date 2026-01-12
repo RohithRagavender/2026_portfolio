@@ -1,5 +1,5 @@
 import { Github, Linkedin, Download } from "lucide-react";
-import DynamicQuote from "./DynamicQuotes";
+
 
 const Footer = () => {
   return (
@@ -23,10 +23,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* CENTER QUOTE */}
-          <div className="text-center max-w-md">
-             <DynamicQuote />
-          </div>
+        
 
           {/* RIGHT */}
           <div className="flex items-center gap-5">

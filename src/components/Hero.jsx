@@ -99,7 +99,7 @@ const Hero = () => {
     "
             >
               <img
-                src="Pic.png"
+                src="/Pic.png"
                 alt="Rohith"
                 className="w-full h-full object-cover"
               />

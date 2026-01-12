@@ -27,7 +27,7 @@ const About = () => {
               "
           >
             <img
-              src="Pic2.png"
+              src="/Pic2.png"
               alt="Rohith Avatar"
               className="w-full h-full object-cover"
             />
@@ -115,7 +115,7 @@ const About = () => {
       z-10
     ">
       <img
-        src="Pic2.png"
+        src="/Pic2.png"
         alt="Rohith"
         className="w-full h-full object-cover"
       />
