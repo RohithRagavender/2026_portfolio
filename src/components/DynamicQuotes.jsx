@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import quotes from "../data/Quotes";
+import Quotes from "../data/Quotes";
 
 const DynamicQuote = () => {
   const [index, setIndex] = useState(0);
@@ -24,7 +24,7 @@ const DynamicQuote = () => {
           transition={{ duration: 0.4 }}
           className="text-gray-400 italic"
         >
-          “{quotes[index]}”
+          “{Quotes[index]}”
         </motion.p>
       </AnimatePresence>
     </div>
