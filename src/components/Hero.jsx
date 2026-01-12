@@ -49,7 +49,7 @@ const Hero = () => {
               </a>
 
               <a
-                href="DATA_SCIENCETIST.pdf"
+                href="./DATA_SCIENCETIST.pdf"
                 download
                 className="border border-indigo-500 px-6 py-2 rounded
               hover:bg-indigo-500 transition"
