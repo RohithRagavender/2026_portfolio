@@ -4,6 +4,13 @@ import { Github } from "lucide-react";
 
 const projects = [
   {
+    title: "Hybrid AI Chatbot",
+    desc: "Hybrid AI Chatbot using Retrieval-Augmented Generation and Text-to-SQL ",
+    tool: ["ChromaDB,  Python, Langchain , RAG , MYSQL, Ollama "],
+    image: "/project_assets/hybrid-ai-banner.jpg",
+    github: "https://github.com/RohithRagavender/Hybrid_AI_RAG",
+  },
+  {
     title: "RAG Chatbot",
     desc: "Personal Chatbot using Retrieval-Augmented Generation",
     tool: ["PDF Loader, ChromaDB, Gemini, Python, LLM, GPU"],
@@ -44,6 +51,13 @@ const projects = [
     tool: ["React, Vite, Tailwind CSS"],
     image: "/project_assets/cleventa.png",
     github: "https://github.com/RohithRagavender/Cleventa",
+  },
+  {
+    title: "Orcuss Portfolio",
+    desc: "Client Personal Portfolio Website project ",
+    tool: ["React, Vite, Tailwind CSS"],
+    image: "/project_assets/image.png",
+    github: "https://github.com/RohithRagavender/Orcuss",
   },
 ];
 
