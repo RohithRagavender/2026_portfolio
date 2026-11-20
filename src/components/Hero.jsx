@@ -1,116 +1,53 @@
-import React from "react";
-import { Github, Linkedin } from "lucide-react";
-import { motion } from "framer-motion";
+import { Github, Linkedin, ArrowDownToLine, ArrowUpRight } from "lucide-react";
+import { motion as Motion } from "framer-motion";
 import { fadeUp } from "../animation";
+import { profile, stats } from "../data";
 
-const Hero = () => {
-  return (
-    <motion.section
-      id="skills"
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="bg-gray-900 py-20"
-    >
+const Hero = () => (
+  <section id="home" className="max-w-6xl mx-auto px-5 pt-28 pb-16">
+    <Motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0} className="mono flex items-center gap-2 text-mute">
+      <span className="size-2 rounded-full bg-signal animate-pulse" /> Open to AI / data engineering roles · {profile.location}
+    </Motion.div>
 
-      <section
-        id="home"
-        className="min-h-screen flex items-center justify-center px-6"
-      >
-        <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div className="grid lg:grid-cols-[1fr_20rem] gap-12 mt-8">
+      <div>
+        <Motion.h1 variants={fadeUp} initial="hidden" animate="visible" custom={1} className="font-display text-[2.6rem] sm:text-6xl lg:text-[4.6rem] font-semibold leading-[1.02] tracking-tight">
+          Rohith
+          <br />
+          <em>Ragavender</em> C.
+        </Motion.h1>
+        <Motion.p variants={fadeUp} initial="hidden" animate="visible" custom={2} className="mono mt-8 !text-sm">
+          {profile.role}
+        </Motion.p>
+        <Motion.p variants={fadeUp} initial="hidden" animate="visible" custom={3} className="mt-4 max-w-2xl text-lg leading-relaxed text-ink/80">
+          {profile.summary}
+        </Motion.p>
+        <Motion.div variants={fadeUp} initial="hidden" animate="visible" custom={4} className="mt-8 flex flex-wrap items-center gap-4">
+          <a href={profile.resume} download className="inline-flex items-center gap-2 bg-signal text-white px-5 py-3 mono hover:brightness-125 transition">
+            <ArrowDownToLine size={16} /> Resume
+          </a>
+          <a href="#contact" className="inline-flex items-center gap-2 border border-rule px-5 py-3 mono hover:border-signal transition">
+            Get in touch <ArrowUpRight size={16} />
+          </a>
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-signal transition"><Github size={20} /></a>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-signal transition"><Linkedin size={20} /></a>
+        </Motion.div>
+      </div>
 
-          {/* LEFT CONTENT */}
-          <div className="text-left">
-            <h1 className="text-4xl md:text-5xl font-bold">
-              Hi, I'm{" "}
-              <span className="text-indigo-400">Rohith</span>
-            </h1>
+      <Motion.aside variants={fadeUp} initial="hidden" animate="visible" custom={3} className="panel p-4 self-start">
+        <img src="/Pic.png" alt="Rohith Ragavender" className="w-full aspect-[4/5] object-cover rounded-lg grayscale hover:grayscale-0 transition duration-500" />
+      </Motion.aside>
+    </div>
 
-            <h3 className="mt-3 text-xl md:text-2xl text-gray-300">
-              Frontend & Machine Learning Developer
-            </h3>
-
-            <p className="mt-5 text-gray-400 leading-relaxed">
-              I’m a passionate developer who enjoys building clean, responsive
-              user interfaces and exploring intelligent systems using Machine
-              Learning. I love turning ideas into real-world applications and
-              continuously improving my skills with modern technologies.
-            </p>
-
-            {/* BUTTONS */}
-            <div className="mt-6 flex gap-4">
-              <a
-                href="#contact"
-                className="bg-indigo-500 px-6 py-2 rounded
-              hover:shadow-[0_0_25px_#6366f1] transition"
-              >
-                Hire Me
-              </a>
-
-              <a
-                href="./DATA_SCIENCETIST.pdf"
-                download
-                className="border border-indigo-500 px-6 py-2 rounded
-              hover:bg-indigo-500 transition"
-              >
-                Download Resume
-              </a>
-            </div>
-
-            {/* DIVIDER */}
-            <hr className="my-6 border-gray-700 w-2/3" />
-
-            {/* SOCIALS */}
-            <div className="flex items-center gap-4">
-              <span className="text-gray-400">Follow me:</span>
-
-              <a
-                href="https://github.com/RohithRagavender"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-indigo-400 transition"
-              >
-                <Github size={22} />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/rohith0410"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-indigo-400 transition"
-              >
-                <Linkedin size={22} />
-              </a>
-            </div>
-          </div>
-
-          {/* RIGHT IMAGE */}
-          <div className="flex justify-center md:justify-end">
-            <div
-              className="
-      w-72 h-80
-      md:w-[420px] md:h-[520px]
-      lg:w-[400px] lg:h-[490px]
-      rounded-2xl overflow-hidden
-      border border-indigo-500/40
-      shadow-[0_0_50px_rgba(99,102,241,0.6)]
-      bg-black
-    "
-            >
-              <img
-                src="/Pic.png"
-                alt="Rohith"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-
-
+    <dl className="rule border-b border-rule mt-14 grid grid-cols-3">
+      {stats.map((s) => (
+        <div key={s.label} className="py-5 pr-4 [&:not(:first-child)]:pl-4 [&:not(:first-child)]:border-l border-rule">
+          <dt className="font-display text-3xl md:text-5xl font-semibold">{s.value}</dt>
+          <dd className="mono text-mute mt-1">{s.label}</dd>
         </div>
-      </section>
-    </motion.section>
-  );
-};
+      ))}
+    </dl>
+  </section>
+);
 
 export default Hero;

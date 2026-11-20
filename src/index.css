@@ -1,14 +1,142 @@
 @import "tailwindcss";
+
+@theme {
+  /* names kept so components keep working: paper = background, ink = foreground */
+  --color-paper: #05070d;
+  --color-paper-2: #0b1020;
+  --color-ink: #e6ecff;
+  --color-signal: #4f7cff;
+  --color-cyan: #29e0ff;
+  --color-mute: #7d8bb0;
+  --color-rule: #1b2440;
+  --font-display: "Unbounded", sans-serif;
+  --font-sans: "Manrope", sans-serif;
+  --font-mono: "Geist Mono", monospace;
+}
+
 html {
   scroll-behavior: smooth;
-  user-select: none;
-  font-family: 'Poppins', sans-serif;
+  scroll-padding-top: 4.5rem;
 }
 
-* {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
+/* ---- Backdrop: aurora + cursor-lit blueprint grid ---- */
+.bd { position: fixed; inset: 0; z-index: -10; overflow: hidden; pointer-events: none; background: var(--color-paper); }
+.bd-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.55; will-change: transform; }
+.bd-a { width: 46rem; height: 46rem; top: -14rem; right: -10rem; background: radial-gradient(circle, #3b63ff, transparent 68%); animation: driftA 26s ease-in-out infinite alternate; }
+.bd-b { width: 40rem; height: 40rem; top: 30%; left: -14rem; background: radial-gradient(circle, #14b8d9, transparent 68%); opacity: 0.32; animation: driftB 32s ease-in-out infinite alternate; }
+.bd-c { width: 36rem; height: 36rem; bottom: -12rem; right: 12%; background: radial-gradient(circle, #5b3fff, transparent 68%); opacity: 0.3; animation: driftC 38s ease-in-out infinite alternate; }
+@keyframes driftA { to { transform: translate(-9rem, 7rem) scale(1.15); } }
+@keyframes driftB { to { transform: translate(10rem, -6rem) scale(1.2); } }
+@keyframes driftC { to { transform: translate(-8rem, -9rem) scale(0.9); } }
+.bd-grid {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgb(120 150 255 / 0.07) 1px, transparent 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, rgb(120 150 255 / 0.07) 1px, transparent 1px) 0 0 / 56px 56px;
+}
+.bd-grid-lit {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgb(41 224 255 / 0.55) 1px, transparent 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, rgb(41 224 255 / 0.55) 1px, transparent 1px) 0 0 / 56px 56px;
+  -webkit-mask-image: radial-gradient(260px circle at var(--mx, -500px) var(--my, -500px), #000, transparent 70%);
+  mask-image: radial-gradient(260px circle at var(--mx, -500px) var(--my, -500px), #000, transparent 70%);
+}
+.bd-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(420px circle at var(--mx, -500px) var(--my, -500px), rgb(79 124 255 / 0.16), transparent 70%);
+}
+.bd-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, transparent 40%, rgb(5 7 13 / 0.65) 100%); }
+
+::selection {
+  background: var(--color-signal);
+  color: #fff;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rule { border-top: 1px solid var(--color-rule); }
+
+h1 em, h2 em {
+  font-style: normal;
+  background: linear-gradient(95deg, var(--color-signal), var(--color-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  background: rgb(79 124 255 / 0.06);
+  color: #b9c6ef;
+}
+
+.panel {
+  background: linear-gradient(180deg, rgb(11 16 32 / 0.9), rgb(8 12 24 / 0.9));
+  border: 1px solid var(--color-rule);
+  border-radius: 14px;
+}
+
+.flow {
+  stroke-dasharray: 3 7;
+  animation: dash 1s linear infinite;
+}
+@keyframes dash {
+  to { stroke-dashoffset: -10; }
+}
+
+.proj-row {
+  transition: background 0.3s, border-color 0.3s;
+  border-left: 2px solid transparent;
+}
+.proj-row:hover {
+  background: #111c3d; /* solid, lighter navy: no see-through blending */
+  border-color: var(--color-signal);
+  border-left-color: var(--color-signal);
+}
+.proj-row:hover h3 { color: #fff; }
+.proj-row:hover p { color: #dbe4ff; }
+.proj-row:hover .proj-sub,
+.proj-row:hover .mono.text-signal { color: var(--color-cyan); }
+.proj-row:hover .tag {
+  color: #fff;
+  background: rgb(79 124 255 / 0.28);
+  border-color: rgb(120 155 255 / 0.6);
+}
+
+.hover-card { transition: background 0.3s, border-color 0.3s; }
+.hover-card:hover {
+  background: #111c3d; /* solid, lighter navy: no see-through blending */
+  border-color: var(--color-signal);
+  border-left-color: var(--color-signal);
+}
+.hover-card:hover h3 { color: #fff; }
+.hover-card:hover p { color: #dbe4ff; }
+.hover-card:hover .proj-sub,
+.hover-card:hover .mono.text-signal { color: var(--color-cyan); }
+.hover-card:hover .tag {
+  color: #fff;
+  background: rgb(79 124 255 / 0.28);
+  border-color: rgb(120 155 255 / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}

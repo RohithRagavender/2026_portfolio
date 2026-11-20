@@ -12,11 +12,11 @@ createRoot(document.getElementById('root')).render(
       position="top-right"
       toastOptions={{
         style: {
-          background: "#020617",
-          color: "#e5e7eb",
-          border: "1px solid rgba(34,211,238,0.4)",
-          boxShadow: "0 0 25px rgba(34,211,238,0.6)",
-          fontFamily: "Poppins",
+          background: "#0b1020",
+          color: "#e6ecff",
+          border: "1px solid #4f7cff",
+          borderRadius: "10px",
+          fontFamily: "Manrope, sans-serif",
         },
       }}
     />
